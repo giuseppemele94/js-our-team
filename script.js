@@ -39,20 +39,27 @@ const teamMembers = [
 
 
 //Parte di SETUP 
-//const outputTest = document.getElementById("team-list"); 
+const teamContainer = document.getElementById("team-container");
 
 
-//variabile per accumulare gli elementi di output
-// let outputTotale = ""; 
-// for(let i =0; i < teamMembers.length; ++i) {
+//Funzione che genera la card ricevendo oggetti dal quale prendere le informazioni
+function createMemberCard (memberObj) {
 
-//   //estrapolo ogni volta un oggetto membro diverso
-//   const memberTeam = teamMembers[i];
-//   outputTotale += `<li>${memberTeam.name} ${memberTeam.role} ${memberTeam.email} ${memberTeam.image}</li>`
+  const card = `<div class="col-12 col-md-6 col-lg-4">
+    <div class="team-card d-flex bg-dark text-white h-100 rounded overflow-hidden">
 
- 
-// }
+        <div class="team-img">
+            <img src="img/${memberObj.img}" alt="${memberObj.name}">
+        </div>
 
-// outputTest.innerHTML = outputTotale; 
+        <div class="team-text p-3 text-start">
+            <h5 class="fw-bold mb-1">${memberObj.name}</h5>
+            <p class="mb-0 text-info">${memberObj.email}</p>
+        </div>
+
+    </div>
+</div>` ;
+return card ; 
+}
 
 
