@@ -41,10 +41,18 @@ const teamMembers = [
 //Parte di SETUP 
 const teamContainer = document.getElementById("team-container");
 
+// selezione di elementi form
+const form = document.getElementById("member-form");
+const nameField = document.getElementById("name");
+const roleField = document.getElementById("role"); 
+const emailField = document.getElementById("email"); 
+const imageField = document.getElementById("image"); 
 
 //chiamo la funzione per caricare la lista membri 
 renderTeam(teamMembers,teamContainer); 
 
+// chiamo la funzione per aggiungere un nuovo membro 
+form.addEventListener("submit",addMember); 
 
 // funzione che fa il rendering completo delle card dei membri del team
 function renderTeam(arrayOgg, output) {
@@ -88,3 +96,35 @@ return card ;
 }
 
 
+// funzione di gestione della creazione nuovo membro (gestione invio form)
+function addMember(event) {
+
+  //prevengo comportamento base del form 
+  event.preventDefault(); 
+
+  //recupero i valori dei campi 
+  const name = nameField.value;
+  const role = roleField.value;
+  const email = emailField.value;
+  const image = imageField.value; 
+
+  //creo il nuovo oggetto del membro del team 
+
+  const newMember = {
+    name,
+    role,
+    email,
+    img: image
+  }
+
+  //aggiungo i dati nell'array teamMembers 
+  teamMembers.push(newMember);
+
+  //pulisco i campi del form 
+
+  event.target.reset(); 
+
+  // aggiorniamo la pagina
+    // chiamo funzione per renderizzare la lista membri
+    renderTeam(teamMembers,teamContainer); 
+}
