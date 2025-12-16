@@ -42,6 +42,30 @@ const teamMembers = [
 const teamContainer = document.getElementById("team-container");
 
 
+//chiamo la funzione per caricare la lista membri 
+renderTeam(teamMembers,teamContainer); 
+
+
+// funzione che fa il rendering completo delle card dei membri del team
+function renderTeam(arrayOgg, output) {
+
+  //variabile che accumulerà gli elementi di ouput 
+  let cards = ""; 
+
+  //ciclo l'array di oggetti 
+  for(let i = 0; i < arrayOgg.length; ++i) {
+    
+    //estrapolo ogni volta un oggetto del team diverso 
+    const memberTeam = arrayOgg[i]; 
+
+    //incremento ad ogni giro il contenuto dell'output 
+    cards += createMemberCard(memberTeam);
+  }
+
+  //inseriamo la stringa che innerhtml trasformerà nell'elemento di output 
+  output.innerHTML = cards ; 
+}
+
 //Funzione che genera la card ricevendo oggetti dal quale prendere le informazioni
 function createMemberCard (memberObj) {
 
@@ -49,11 +73,12 @@ function createMemberCard (memberObj) {
     <div class="team-card d-flex bg-dark text-white h-100 rounded overflow-hidden">
 
         <div class="team-img">
-            <img src="img/${memberObj.img}" alt="${memberObj.name}">
+            <img src="${memberObj.img}" alt="${memberObj.name}">
         </div>
 
         <div class="team-text p-3 text-start">
             <h5 class="fw-bold mb-1">${memberObj.name}</h5>
+            <p class="mb-0">${memberObj.role}</p>
             <p class="mb-0 text-info">${memberObj.email}</p>
         </div>
 
