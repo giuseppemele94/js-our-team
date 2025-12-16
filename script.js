@@ -38,4 +38,19 @@ const teamMembers = [
 ];
 
 
-console.log(teamMembers); 
+//Parte di SETUP 
+const outputTest = document.getElementById("team-list"); 
+
+
+//variabile per accumulare gli elementi di output
+let outputTotale = ""; 
+for(let i =0; i < teamMembers.length; ++i) {
+
+  //estrapolo ogni volta un oggetto membro diverso
+  const memberTeam = teamMembers[i];
+  outputTotale += `<li>${memberTeam.name} ${memberTeam.role} ${memberTeam.email} ${memberTeam.image}</li>`
+
+ 
+}
+
+outputTest.innerHTML = outputTotale; 
